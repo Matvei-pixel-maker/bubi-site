@@ -15,6 +15,7 @@
   --animate-marquee: marquee 34s linear infinite;
   --animate-spin-slower: spin 24s linear infinite;
   --animate-float-soft: float-soft 7s ease-in-out infinite;
+  --animate-mascot-float: mascot-float 7s ease-in-out infinite;
   --animate-pulse-soft: pulse-soft 4s ease-in-out infinite;
 
   @keyframes marquee {
@@ -23,6 +24,16 @@
     }
     to {
       transform: translate3d(-50%, 0, 0);
+    }
+  }
+
+  @keyframes mascot-float {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+    50% {
+      transform: translate3d(0, -9px, 0) rotate(2.5deg);
     }
   }
 

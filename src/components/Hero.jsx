@@ -57,20 +57,69 @@ function HeroDecor() {
           fillOpacity="0.4"
         />
       </svg>
+    </div>
+  )
+}
 
-      <svg
-        className="absolute left-[43%] top-24 hidden h-24 w-40 text-bubi-pink/35 xl:block"
-        viewBox="0 0 160 90"
-        fill="none"
-      >
-        <path
-          d="M2 60C20 12 48 10 58 40C68 70 92 82 112 54C126 34 142 30 158 40"
-          stroke="currentColor"
-          strokeWidth="3"
-          strokeLinecap="round"
-          strokeDasharray="1 10"
-        />
-      </svg>
+const MASCOTS = [
+  {
+    file: 'mascot01.webp',
+    position:
+      '-left-4 top-[74px] h-12 w-12 -rotate-12 sm:-left-10 sm:top-[92px] sm:h-20 sm:w-20 lg:top-[98px] lg:h-24 lg:w-24 xl:h-28 xl:w-28',
+    duration: '7.4s',
+    delay: '-0.6s',
+  },
+  {
+    file: 'mascot02.webp',
+    position:
+      '-left-5 bottom-[86px] h-12 w-12 rotate-[8deg] sm:-left-8 sm:bottom-[100px] sm:h-20 sm:w-20 lg:-left-10 lg:bottom-[24px] lg:h-24 lg:w-24 xl:h-28 xl:w-28',
+    duration: '8.2s',
+    delay: '-2.4s',
+  },
+  {
+    file: 'mascot03.webp',
+    position:
+      '-right-4 top-[74px] h-12 w-12 rotate-[14deg] sm:-right-7 sm:top-[92px] sm:h-20 sm:w-20 lg:-right-8 lg:top-[98px] lg:h-24 lg:w-24 xl:h-28 xl:w-28',
+    duration: '7.8s',
+    delay: '-3.1s',
+  },
+  {
+    file: 'mascot04.webp',
+    position:
+      '-right-5 bottom-[86px] h-12 w-12 -rotate-[10deg] sm:-right-8 sm:bottom-[100px] sm:h-20 sm:w-20 lg:-right-8 lg:bottom-[24px] lg:h-24 lg:w-24 xl:h-28 xl:w-28',
+    duration: '9s',
+    delay: '-1.3s',
+  },
+  {
+    file: 'mascot05.webp',
+    position:
+      'left-1/2 top-[76px] h-8 w-8 -translate-x-1/2 rotate-[-6deg] opacity-75 sm:top-[88px] sm:h-12 sm:w-12 lg:top-[108px] lg:h-16 lg:w-16',
+    duration: '6.6s',
+    delay: '-4s',
+  },
+]
+
+function HeroMascots() {
+  return (
+    <div
+      aria-hidden="true"
+      className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
+    >
+      {MASCOTS.map(({ file, position, duration, delay }) => (
+        <div key={file} className={`absolute ${position}`}>
+          <img
+            src={`${import.meta.env.BASE_URL}mascots/${file}`}
+            alt=""
+            width="320"
+            height="320"
+            loading="lazy"
+            decoding="async"
+            draggable={false}
+            style={{ animationDuration: duration, animationDelay: delay }}
+            className="h-full w-full animate-mascot-float select-none object-contain drop-shadow-[0_18px_26px_rgba(17,17,17,0.16)] motion-reduce:animate-none"
+          />
+        </div>
+      ))}
     </div>
   )
 }
@@ -224,6 +273,7 @@ export default function Hero() {
       className="relative isolate min-h-[100svh] overflow-hidden bg-bubi-blush"
     >
       <HeroDecor />
+      <HeroMascots />
 
       <div className="relative z-10 flex min-h-[100svh] flex-col">
         <div className="mx-auto grid w-full max-w-[1440px] flex-1 items-center gap-6 px-4 pb-10 pt-28 sm:gap-8 sm:px-6 sm:pt-32 lg:grid-cols-[minmax(0,1.03fr)_minmax(0,0.97fr)] lg:gap-6 lg:px-10 lg:pb-10 lg:pt-32 xl:gap-10">

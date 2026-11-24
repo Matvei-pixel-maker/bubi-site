@@ -5,12 +5,10 @@ export default function BrandMark({ compact = false }) {
       aria-label="bubi — бабл-ти и кафе, на главную"
       className="group flex shrink-0 items-center gap-2.5 rounded-full"
     >
-      <span className="relative grid h-11 w-11 shrink-0 place-items-center rounded-full bg-bubi-pink shadow-[inset_0_-4px_0_rgba(17,17,17,0.14),0_8px_18px_-10px_rgba(255,133,179,0.9)] transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-105">
-        <span className="font-display text-[12px] font-extrabold tracking-[-0.04em] text-white">
+      <span className="relative grid h-11 w-11 shrink-0 place-items-center rounded-full border-[1.5px] border-bubi-pink bg-white shadow-[0_10px_22px_-14px_rgba(232,122,158,0.85)] transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-105">
+        <span className="font-display text-[13px] font-extrabold tracking-[-0.04em] text-[#E87A9E]">
           bubi
         </span>
-        <span className="absolute -left-0.5 bottom-1 h-1.5 w-1.5 rounded-full bg-white/80" />
-        <span className="absolute right-0 top-0 h-3 w-3 rounded-full border-[3px] border-white bg-bubi-graphite" />
       </span>
 
       {!compact && (
