@@ -63,35 +63,35 @@ function HeroDecor() {
 
 const MASCOTS = [
   {
-    file: 'mascot01.webp',
+    file: 'mascot01-384.webp',
     position:
       '-left-4 top-[74px] h-12 w-12 -rotate-12 sm:-left-10 sm:top-[92px] sm:h-20 sm:w-20 lg:top-[98px] lg:h-24 lg:w-24 xl:h-28 xl:w-28',
     duration: '7.4s',
     delay: '-0.6s',
   },
   {
-    file: 'mascot02.webp',
+    file: 'mascot02-384.webp',
     position:
       '-left-5 bottom-[86px] h-12 w-12 rotate-[8deg] sm:-left-8 sm:bottom-[100px] sm:h-20 sm:w-20 lg:-left-10 lg:bottom-[24px] lg:h-24 lg:w-24 xl:h-28 xl:w-28',
     duration: '8.2s',
     delay: '-2.4s',
   },
   {
-    file: 'mascot03.webp',
+    file: 'mascot03-384.webp',
     position:
       '-right-4 top-[74px] h-12 w-12 rotate-[14deg] sm:-right-7 sm:top-[92px] sm:h-20 sm:w-20 lg:-right-8 lg:top-[98px] lg:h-24 lg:w-24 xl:h-28 xl:w-28',
     duration: '7.8s',
     delay: '-3.1s',
   },
   {
-    file: 'mascot04.webp',
+    file: 'mascot04-384.webp',
     position:
       '-right-5 bottom-[86px] h-12 w-12 -rotate-[10deg] sm:-right-8 sm:bottom-[100px] sm:h-20 sm:w-20 lg:-right-8 lg:bottom-[24px] lg:h-24 lg:w-24 xl:h-28 xl:w-28',
     duration: '9s',
     delay: '-1.3s',
   },
   {
-    file: 'mascot05.webp',
+    file: 'mascot05-384.webp',
     position:
       'left-1/2 top-[76px] h-8 w-8 -translate-x-1/2 rotate-[-6deg] opacity-75 sm:top-[88px] sm:h-12 sm:w-12 lg:top-[108px] lg:h-16 lg:w-16',
     duration: '6.6s',
@@ -110,8 +110,8 @@ function HeroMascots() {
           <img
             src={`${import.meta.env.BASE_URL}mascots/${file}`}
             alt=""
-            width="320"
-            height="320"
+            width="384"
+            height="384"
             loading="lazy"
             decoding="async"
             draggable={false}
