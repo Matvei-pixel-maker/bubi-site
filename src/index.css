@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bubi-white: #ffffff;
+  --color-bubi-blush: #fff5f8;
+  --color-bubi-pink: #ff85b3;
+  --color-bubi-rose: #ff7aa8;
+  --color-bubi-petal: #ffb3d1;
+  --color-bubi-graphite: #111111;
+
+  --font-sans: "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    sans-serif;
+  --font-display: "Unbounded", "Manrope", ui-sans-serif, system-ui, sans-serif;
+
+  --animate-marquee: marquee 34s linear infinite;
+  --animate-spin-slower: spin 24s linear infinite;
+  --animate-float-soft: float-soft 7s ease-in-out infinite;
+  --animate-pulse-soft: pulse-soft 4s ease-in-out infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+
+  @keyframes float-soft {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+    50% {
+      transform: translate3d(0, -12px, 0) rotate(1.5deg);
+    }
+  }
+
+  @keyframes pulse-soft {
+    0%,
+    100% {
+      opacity: 0.45;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scale(1.04);
+    }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-bubi-blush font-sans text-bubi-graphite antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: #ff85b3;
+    color: #111111;
+  }
+
+  :focus-visible {
+    outline: 2px solid #ff85b3;
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
