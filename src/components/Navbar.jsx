@@ -8,8 +8,6 @@ import {
   ShoppingBag,
   X,
 } from 'lucide-react'
-import BrandMark from './BrandMark'
-
 const EASE = [0.22, 1, 0.36, 1]
 
 export function AddressPlate({ className = '' }) {
@@ -75,7 +73,22 @@ export default function Navbar() {
           className="relative rounded-[26px] border border-bubi-graphite/10 bg-white/80 px-3 py-2 shadow-[0_20px_60px_-34px_rgba(17,17,17,0.6)] backdrop-blur-xl sm:rounded-full sm:px-4"
         >
           <div className="relative flex items-center justify-between gap-2 sm:gap-4">
-            <BrandMark />
+            <a
+              href="#top"
+              aria-label="bubi — на главную"
+              className="group flex shrink-0 items-center"
+            >
+              <img
+                src={`${import.meta.env.BASE_URL}images/brand-logo.webp`}
+                alt="bubi"
+                width="640"
+                height="225"
+                fetchPriority="high"
+                decoding="async"
+                draggable={false}
+                className="h-8 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.04] sm:h-10"
+              />
+            </a>
 
             <div className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 md:block">
               <AddressPlate />
