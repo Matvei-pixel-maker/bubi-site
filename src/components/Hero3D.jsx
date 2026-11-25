@@ -1,4 +1,4 @@
-import { Component, Suspense, useRef } from 'react'
+import { Component, Suspense, useEffect, useRef, useState } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import {
   Center,
@@ -47,6 +47,20 @@ const PEARLS = [
   { position: [1.82, 1.9, 1.15], size: 0.1, pink: false, speed: 1.1, phase: 5.6, spin: 0.36 },
 ]
 
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(
+    () => typeof window !== 'undefined' && window.innerWidth < 768,
+  )
+
+  useEffect(() => {
+    const sync = () => setIsMobile(window.innerWidth < 768)
+    window.addEventListener('resize', sync)
+    return () => window.removeEventListener('resize', sync)
+  }, [])
+
+  return isMobile
+}
+
 class EnvironmentBoundary extends Component {
   state = { failed: false }
 
@@ -64,7 +78,7 @@ class EnvironmentBoundary extends Component {
   }
 }
 
-function Pearls() {
+function Pearls({ isMobile }) {
   const group = useRef(null)
   const { pointer } = useThree()
 
@@ -74,18 +88,23 @@ function Pearls() {
     const time = state.clock.elapsedTime
     const step = Math.min(delta, 0.05)
 
-    group.current.rotation.y = EASE(
-      group.current.rotation.y,
-      pointer.x * 0.3,
-      3.5,
-      step,
-    )
-    group.current.rotation.x = EASE(
-      group.current.rotation.x,
-      -pointer.y * 0.16,
-      3.5,
-      step,
-    )
+    if (isMobile) {
+      group.current.rotation.y = Math.sin(time * 0.38) * 0.1
+      group.current.rotation.x = Math.sin(time * 0.29) * 0.06
+    } else {
+      group.current.rotation.y = EASE(
+        group.current.rotation.y,
+        pointer.x * 0.3,
+        3.5,
+        step,
+      )
+      group.current.rotation.x = EASE(
+        group.current.rotation.x,
+        -pointer.y * 0.16,
+        3.5,
+        step,
+      )
+    }
 
     group.current.children.forEach((pearl, index) => {
       const config = PEARLS[index]
@@ -156,14 +175,14 @@ function BubbiLogo() {
   )
 }
 
-function Scene() {
+function Scene({ isMobile }) {
   const { viewport } = useThree()
   const scale = Math.min(1, viewport.width / 6.8)
 
   return (
     <group scale={scale}>
       <BubbiLogo />
-      <Pearls />
+      <Pearls isMobile={isMobile} />
 
       <ContactShadows
         position={[0, -2.08, 0]}
@@ -198,11 +217,16 @@ function Scene() {
 }
 
 export default function Hero3D() {
+  const isMobile = useIsMobile()
+
   return (
     <Canvas
       dpr={[1, 2]}
       camera={{ position: [0, 0.15, 8.6], fov: 42 }}
-      style={{ touchAction: 'pan-y' }}
+      style={{
+        touchAction: 'pan-y',
+        pointerEvents: isMobile ? 'none' : 'auto',
+      }}
       gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
       onCreated={({ gl }) => {
         gl.toneMapping = THREE.ACESFilmicToneMapping
@@ -210,21 +234,23 @@ export default function Hero3D() {
       }}
     >
       <Suspense fallback={null}>
-        <Scene />
+        <Scene isMobile={isMobile} />
       </Suspense>
 
-      <OrbitControls
-        makeDefault
-        enableZoom={false}
-        enablePan={false}
-        enableDamping
-        dampingFactor={0.06}
-        rotateSpeed={0.55}
-        minPolarAngle={Math.PI / 2 - 0.5}
-        maxPolarAngle={Math.PI / 2 + 0.42}
-        minAzimuthAngle={-0.7}
-        maxAzimuthAngle={0.7}
-      />
+      {!isMobile && (
+        <OrbitControls
+          makeDefault
+          enableZoom={false}
+          enablePan={false}
+          enableDamping
+          dampingFactor={0.06}
+          rotateSpeed={0.55}
+          minPolarAngle={Math.PI / 2 - 0.5}
+          maxPolarAngle={Math.PI / 2 + 0.42}
+          minAzimuthAngle={-0.7}
+          maxAzimuthAngle={0.7}
+        />
+      )}
     </Canvas>
   )
 }

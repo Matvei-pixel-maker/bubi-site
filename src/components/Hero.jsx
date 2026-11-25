@@ -276,7 +276,7 @@ export default function Hero() {
       <HeroMascots />
 
       <div className="relative z-10 flex min-h-[100svh] flex-col">
-        <div className="mx-auto grid w-full max-w-[1440px] flex-1 items-center gap-6 px-4 pb-10 pt-28 sm:gap-8 sm:px-6 sm:pt-32 lg:grid-cols-[minmax(0,1.03fr)_minmax(0,0.97fr)] lg:gap-6 lg:px-10 lg:pb-10 lg:pt-32 xl:gap-10">
+        <div className="mx-auto grid w-full max-w-[1440px] flex-1 items-center gap-6 px-4 pb-10 pt-24 sm:gap-8 sm:px-6 sm:pt-32 lg:grid-cols-[minmax(0,1.03fr)_minmax(0,0.97fr)] lg:gap-6 lg:px-10 lg:pb-10 lg:pt-32 xl:gap-10">
           <motion.div
             initial={{ opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
@@ -404,7 +404,7 @@ export default function Hero() {
               <div
                 role="img"
                 aria-label="Интерактивный 3D-логотип bubi в окружении глянцевых жемчужин тапиоки. Потяните сцену, чтобы повернуть логотип."
-                className="absolute inset-0 cursor-grab active:cursor-grabbing"
+                className="absolute inset-0 cursor-default md:cursor-grab md:active:cursor-grabbing"
               >
                 <Suspense fallback={<VisualFallback />}>
                   <Hero3D />
@@ -415,7 +415,7 @@ export default function Hero() {
               <HeartCloudSticker />
 
               <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 flex justify-center">
-                <span className="inline-flex items-center gap-2 rounded-full border border-bubi-graphite/10 bg-white/80 px-3.5 py-2 text-[9px] font-extrabold uppercase tracking-[0.16em] text-bubi-graphite/55 shadow-[0_12px_28px_-22px_rgba(17,17,17,0.5)] backdrop-blur-md sm:text-[10px]">
+                <span className="hidden items-center gap-2 rounded-full border border-bubi-graphite/10 bg-white/80 px-3.5 py-2 text-[9px] font-extrabold uppercase tracking-[0.16em] text-bubi-graphite/55 shadow-[0_12px_28px_-22px_rgba(17,17,17,0.5)] backdrop-blur-md sm:text-[10px] md:inline-flex">
                   <Hand
                     aria-hidden="true"
                     size={13}
